@@ -1,3 +1,4 @@
+# TODO: rename to kubernetes--demo--master
 resource "aws_iam_role" "kubernetes--demo" {
   name = "kubernetes--demo--AmazonEKSMasterRole"
 

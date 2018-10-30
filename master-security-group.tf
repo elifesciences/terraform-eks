@@ -11,9 +11,20 @@ resource "aws_security_group" "kubernetes--demo" {
   }
 
   tags {
-    Name = "terraform-eks-demo"
+    Project = "kubernetes--demo"
   }
 }
+
+resource "aws_security_group_rule" "kubernetes--demo--master-ingress-https" {
+  description              = "Allow pods to communicate with the cluster API Server"
+  from_port                = 443
+  protocol                 = "tcp"
+  security_group_id        = "${aws_security_group.kubernetes--demo.id}"
+  source_security_group_id = "${aws_security_group.kubernetes--demo--worker.id}"
+  to_port                  = 443
+  type                     = "ingress"
+}
+
 
 # OPTIONAL: Allow inbound traffic from your local workstation external IP
 #           to the Kubernetes. You will need to replace A.B.C.D below with
