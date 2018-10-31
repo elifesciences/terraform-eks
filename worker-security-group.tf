@@ -35,3 +35,13 @@ resource "aws_security_group_rule" "kubernetes--demo--worker-ingress-cluster" {
   type                     = "ingress"
 }
 
+resource "aws_security_group_rule" "kubernetes--demo--worker-ingress-public" {
+  description              = "Allow worker to expose NodePort services"
+  from_port                = 30000
+  to_port                  = 32767
+  cidr_blocks              = ["0.0.0.0/0"]
+  protocol                 = "tcp"
+  security_group_id        = "${aws_security_group.kubernetes--demo--worker.id}"
+  type                     = "ingress"
+}
+
