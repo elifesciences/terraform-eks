@@ -9,6 +9,11 @@ resource "aws_iam_role" "kubernetes--demo--user" {
       "Effect": "Allow",
       "Principal": { "AWS": "arn:aws:iam::512686554592:user/elife-alfred" },
       "Action": "sts:AssumeRole"
+    },
+    {
+      "Effect": "Allow",
+      "Principal": { "AWS": "arn:aws:iam::512686554592:user/PeterHooper" },
+      "Action": "sts:AssumeRole"
     }
   ]
 }
