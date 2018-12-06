@@ -36,9 +36,9 @@ resource "aws_launch_configuration" "worker" {
 }
 
 resource "aws_autoscaling_group" "worker" {
-  desired_capacity     = 2
+  desired_capacity     = 3
   launch_configuration = "${aws_launch_configuration.worker.id}"
-  max_size             = 2
+  max_size             = 3
   min_size             = 1
   name                 = "kubernetes--demo--worker"
   vpc_zone_identifier  = ["${var.subnet_id_1}", "${var.subnet_id_2}"]
